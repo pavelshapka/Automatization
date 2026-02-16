@@ -57,3 +57,7 @@ pipeline: !GenericPipeline
     - *prepare_stage # prepare
     - *train_stage
     - *present_model # finals
+    - !BasicStage
+      name: print-results
+      script:
+        - cat ${root.present_model.outputs[0].path}/report.csv
